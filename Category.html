@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - PortzAkura</title>
+    <meta name="description" content="Browse our extensive product categories at PortzAkura.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sakura-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanlines"></div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Shopping Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart" id="closeCart"><i class="bi bi-x"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+            <i class="bi bi-bag"></i>
+            <p>Your cart is empty</p>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total: $<span id="cartTotal">0.00</span></span>
+        </div>
+        <button class="btn-primary checkout-btn" id="checkoutBtn">Checkout</button>
+    </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="index.html" class="logo"><span>P</span>ortzAkura</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Category.html" class="nav-link active">Categories</a>
+            <a href="About.html" class="nav-link">About</a>
+            <a href="Contact.html" class="nav-link">Contact</a>
+            <a href="login.html" class="nav-link nav-cta">Login</a>
+        </div>
+        <div class="nav-actions">
+            <button class="search-btn" id="searchBtn"><i class="bi bi-search"></i></button>
+            <button class="cart-btn" id="cartBtn">
+                <i class="bi bi-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">&#10005;</button>
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="Category.html" class="nav-link active">Categories</a>
+        <a href="About.html" class="nav-link">About</a>
+        <a href="Contact.html" class="nav-link">Contact</a>
+        <a href="login.html" class="nav-link nav-cta">Login</a>
+    </nav>
+</div>
+
+<!-- ══ PAGE HEADER ══ -->
+<section class="page-header">
+    <div class="kanji-bg" style="font-size:200px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.02;">類</div>
+    <div class="page-header-content">
+        <h1>Product Categories</h1>
+        <p>Discover our extensive range of premium products across multiple categories</p>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="bi bi-chevron-right"></i>
+            <span>Categories</span>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FILTERS & SEARCH ══ -->
+<section class="filters-section">
+    <div class="section-inner">
+        <div class="filters-bar">
+            <div class="search-box">
+                <input type="text" id="productSearch" placeholder="Search products...">
+                <i class="bi bi-search"></i>
+            </div>
+            <div class="filter-options">
+                <select id="sortBy">
+                    <option value="name">Sort by Name</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home & Living</option>
+                    <option value="sports">Sports & Fitness</option>
+                    <option value="books">Books & Education</option>
+                    <option value="beauty">Beauty & Personal Care</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PRODUCTS GRID ══ -->
+<section class="products-section">
+    <div class="section-inner">
+        <div class="products-container">
+            <!-- Electronics -->
+            <div class="category-section" data-category="electronics">
+                <h2 class="category-title">Electronics & Gadgets</h2>
+                <div class="products-grid">
+                    <div class="product-card reveal" data-product-id="5" data-name="Premium Headphones" data-price="299" data-rating="4.9">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop" alt="Premium Headphones">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="5"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="5" data-name="Premium Headphones" data-price="299" data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                            <span class="product-badge sale">Sale</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Premium Headphones</h3>
+                            <p class="product-desc">High-quality wireless headphones with noise cancellation</p>
+                            <div class="product-price">
+                                <span class="current-price">$299</span>
+                                <span class="old-price">$399</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="rating-text">(4.9)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="6" data-name="Smart Watch Pro" data-price="199" data-rating="4.7">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop" alt="Smart Watch">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="6"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="6" data-name="Smart Watch Pro" data-price="199" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                            <span class="product-badge new">New</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Smart Watch Pro</h3>
+                            <p class="product-desc">Advanced fitness tracking and health monitoring</p>
+                            <div class="product-price">
+                                <span class="current-price">$199</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.7)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="7" data-name="Wireless Speaker" data-price="149" data-rating="4.8">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="Wireless Speaker">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="7"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="7" data-name="Wireless Speaker" data-price="149" data-image="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Wireless Speaker</h3>
+                            <p class="product-desc">Portable speaker with premium sound quality</p>
+                            <div class="product-price">
+                                <span class="current-price">$149</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="rating-text">(4.8)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="8" data-name="Smartphone" data-price="599" data-rating="4.6">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop" alt="Smartphone">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="8"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="8" data-name="Smartphone" data-price="599" data-image="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Smartphone</h3>
+                            <p class="product-desc">Latest flagship with advanced camera system</p>
+                            <div class="product-price">
+                                <span class="current-price">$599</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.6)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fashion -->
+            <div class="category-section" data-category="fashion">
+                <h2 class="category-title">Fashion & Apparel</h2>
+                <div class="products-grid">
+                    <div class="product-card reveal" data-product-id="9" data-name="Designer Jacket" data-price="189" data-rating="4.5">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=300&fit=crop" alt="Designer Jacket">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="9"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="9" data-name="Designer Jacket" data-price="189" data-image="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Designer Jacket</h3>
+                            <p class="product-desc">Premium quality jacket with modern design</p>
+                            <div class="product-price">
+                                <span class="current-price">$189</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.5)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="10" data-name="Classic Handbag" data-price="249" data-rating="4.7">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=300&fit=crop" alt="Classic Handbag">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="10"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="10" data-name="Classic Handbag" data-price="249" data-image="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Classic Handbag</h3>
+                            <p class="product-desc">Elegant leather handbag for everyday use</p>
+                            <div class="product-price">
+                                <span class="current-price">$249</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.7)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home & Living -->
+            <div class="category-section" data-category="home">
+                <h2 class="category-title">Home & Living</h2>
+                <div class="products-grid">
+                    <div class="product-card reveal" data-product-id="13" data-name="Modern Table Lamp" data-price="89" data-rating="4.5">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" alt="Modern Table Lamp">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="13"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="13" data-name="Modern Table Lamp" data-price="89" data-image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                            <span class="product-badge new">New</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Modern Table Lamp</h3>
+                            <p class="product-desc">Elegant LED table lamp with adjustable brightness</p>
+                            <div class="product-price">
+                                <span class="current-price">$89</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.5)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="14" data-name="Decorative Wall Art" data-price="159" data-rating="4.7">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop" alt="Decorative Wall Art">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="14"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="14" data-name="Decorative Wall Art" data-price="159" data-image="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Decorative Wall Art</h3>
+                            <p class="product-desc">Modern abstract canvas art for contemporary homes</p>
+                            <div class="product-price">
+                                <span class="current-price">$159</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.7)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="15" data-name="Ceramic Vase Set" data-price="79" data-rating="4.3">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop" alt="Ceramic Vase Set">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="15"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="15" data-name="Ceramic Vase Set" data-price="79" data-image="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Ceramic Vase Set</h3>
+                            <p class="product-desc">Set of 3 handcrafted ceramic vases in neutral tones</p>
+                            <div class="product-price">
+                                <span class="current-price">$79</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.3)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="16" data-name="Smart Diffuser" data-price="119" data-rating="4.6">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1544967882-6abce0025ff2?w=300&h=300&fit=crop" alt="Smart Diffuser">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="16"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="16" data-name="Smart Diffuser" data-price="119" data-image="https://images.unsplash.com/photo-1544967882-6abce0025ff2?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Smart Diffuser</h3>
+                            <p class="product-desc">WiFi-enabled essential oil diffuser with app control</p>
+                            <div class="product-price">
+                                <span class="current-price">$119</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.6)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sports -->
+            <div class="category-section" data-category="sports">
+                <h2 class="category-title">Sports & Fitness</h2>
+                <div class="products-grid">
+                    <div class="product-card reveal" data-product-id="17" data-name="Running Shoes" data-price="129" data-rating="4.6">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop" alt="Running Shoes">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="17"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="17" data-name="Running Shoes" data-price="129" data-image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Running Shoes</h3>
+                            <p class="product-desc">Comfortable athletic shoes for daily training</p>
+                            <div class="product-price">
+                                <span class="current-price">$129</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.6)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="18" data-name="Fitness Tracker" data-price="89" data-rating="4.4">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=300&h=300&fit=crop" alt="Fitness Tracker">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="18"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="18" data-name="Fitness Tracker" data-price="89" data-image="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Fitness Tracker</h3>
+                            <p class="product-desc">Advanced fitness tracking with heart rate monitor</p>
+                            <div class="product-price">
+                                <span class="current-price">$89</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.4)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="19" data-name="Yoga Mat Premium" data-price="59" data-rating="4.8">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop" alt="Yoga Mat">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="19"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="19" data-name="Yoga Mat Premium" data-price="59" data-image="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Yoga Mat Premium</h3>
+                            <p class="product-desc">Eco-friendly yoga mat with superior grip and comfort</p>
+                            <div class="product-price">
+                                <span class="current-price">$59</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="rating-text">(4.8)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="20" data-name="Resistance Bands Set" data-price="39" data-rating="4.5">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=300&h=300&fit=crop" alt="Resistance Bands">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="20"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="20" data-name="Resistance Bands Set" data-price="39" data-image="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Resistance Bands Set</h3>
+                            <p class="product-desc">Complete workout band set with multiple resistance levels</p>
+                            <div class="product-price">
+                                <span class="current-price">$39</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.5)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Books & Education -->
+            <div class="category-section" data-category="books">
+                <h2 class="category-title">Books & Education</h2>
+                <div class="products-grid">
+                    <div class="product-card reveal" data-product-id="21" data-name="Programming Guide" data-price="49" data-rating="4.9">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=300&fit=crop" alt="Programming Book">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="21"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="21" data-name="Programming Guide" data-price="49" data-image="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                            <span class="product-badge new">Bestseller</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Programming Guide</h3>
+                            <p class="product-desc">Complete guide to modern web development</p>
+                            <div class="product-price">
+                                <span class="current-price">$49</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="rating-text">(4.9)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="22" data-name="Design Thinking Book" data-price="35" data-rating="4.6">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=300&fit=crop" alt="Design Book">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="22"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="22" data-name="Design Thinking Book" data-price="35" data-image="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Design Thinking Book</h3>
+                            <p class="product-desc">Master the art of creative problem solving</p>
+                            <div class="product-price">
+                                <span class="current-price">$35</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.6)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beauty & Personal Care -->
+            <div class="category-section" data-category="beauty">
+                <h2 class="category-title">Beauty & Personal Care</h2>
+                <div class="products-grid">
+                    <div class="product-card reveal" data-product-id="23" data-name="Skincare Set" data-price="89" data-rating="4.7">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop" alt="Skincare Set">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="23"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="23" data-name="Skincare Set" data-price="89" data-image="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                            <span class="product-badge sale">Sale</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Skincare Set</h3>
+                            <p class="product-desc">Complete 5-step skincare routine for glowing skin</p>
+                            <div class="product-price">
+                                <span class="current-price">$89</span>
+                                <span class="old-price">$129</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.7)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal" data-product-id="24" data-name="Hair Styling Tool" data-price="159" data-rating="4.5">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=300&h=300&fit=crop" alt="Hair Styling Tool">
+                            <div class="product-actions">
+                                <button class="quick-view" data-product-id="24"><i class="bi bi-eye"></i></button>
+                                <button class="add-to-cart" data-product-id="24" data-name="Hair Styling Tool" data-price="159" data-image="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=300&h=300&fit=crop">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Hair Styling Tool</h3>
+                            <p class="product-desc">Professional grade hair straightener and curler</p>
+                            <div class="product-price">
+                                <span class="current-price">$159</span>
+                            </div>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="rating-text">(4.5)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <a href="index.html" class="footer-logo"><span>P</span>ortzAkura</a>
+            <p>Your trusted destination for premium products with exceptional quality and service.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Category.html">Categories</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Customer Service</h4>
+            <ul class="footer-links">
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Legal</h4>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Refund Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-inner">
+            <p>&copy; 2026 PortzAkura. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <i class="bi bi-credit-card"></i>
+                <i class="bi bi-paypal"></i>
+                <span>Secure Payment</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Category page specific functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('productSearch');
+    const sortSelect = document.getElementById('sortBy');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const productCards = document.querySelectorAll('.product-card');
+    const categorySection = document.querySelectorAll('.category-section');
+
+    // Search functionality
+    searchInput.addEventListener('input', filterProducts);
+    sortSelect.addEventListener('change', sortProducts);
+    categoryFilter.addEventListener('change', filterByCategory);
+
+    function filterProducts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        productCards.forEach(card => {
+            const productName = card.querySelector('h3').textContent.toLowerCase();
+            const productDesc = card.querySelector('.product-desc').textContent.toLowerCase();
+            const matches = productName.includes(searchTerm) || productDesc.includes(searchTerm);
+            card.style.display = matches ? 'block' : 'none';
+        });
+    }
+
+    function sortProducts() {
+        const sortValue = sortSelect.value;
+        categorySection.forEach(section => {
+            const grid = section.querySelector('.products-grid');
+            const cards = Array.from(grid.querySelectorAll('.product-card'));
+            
+            cards.sort((a, b) => {
+                switch(sortValue) {
+                    case 'name':
+                        return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+                    case 'price-low':
+                        return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+                    case 'price-high':
+                        return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
+                    case 'rating':
+                        return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+                    default:
+                        return 0;
+                }
+            });
+            
+            cards.forEach(card => grid.appendChild(card));
+        });
+    }
+
+    function filterByCategory() {
+        const selectedCategory = categoryFilter.value;
+        categorySection.forEach(section => {
+            if (selectedCategory === 'all') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = section.dataset.category === selectedCategory ? 'block' : 'none';
+            }
+        });
+    }
+});
+</script>
+
+</body>
+</html>

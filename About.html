@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - PortzAkura</title>
+    <meta name="description" content="Learn about PortzAkura's mission to provide premium quality products and exceptional customer service.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sakura-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanlines"></div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Shopping Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart" id="closeCart"><i class="bi bi-x"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+            <i class="bi bi-bag"></i>
+            <p>Your cart is empty</p>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total: $<span id="cartTotal">0.00</span></span>
+        </div>
+        <button class="btn-primary checkout-btn" id="checkoutBtn">Checkout</button>
+    </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="index.html" class="logo"><span>P</span>ortzAkura</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Category.html" class="nav-link">Categories</a>
+            <a href="About.html" class="nav-link active">About</a>
+            <a href="Contact.html" class="nav-link">Contact</a>
+            <a href="login.html" class="nav-link nav-cta">Login</a>
+        </div>
+        <div class="nav-actions">
+            <button class="search-btn" id="searchBtn"><i class="bi bi-search"></i></button>
+            <button class="cart-btn" id="cartBtn">
+                <i class="bi bi-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">&#10005;</button>
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="Category.html" class="nav-link">Categories</a>
+        <a href="About.html" class="nav-link active">About</a>
+        <a href="Contact.html" class="nav-link">Contact</a>
+        <a href="login.html" class="nav-link nav-cta">Login</a>
+    </nav>
+</div>
+
+<!-- ══ PAGE HEADER ══ -->
+<section class="page-header">
+    <div class="kanji-bg" style="font-size:200px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.02;">私</div>
+    <div class="page-header-content">
+        <h1>About PortzAkura</h1>
+        <p>Discover our story, mission, and commitment to excellence</p>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="bi bi-chevron-right"></i>
+            <span>About</span>
+        </div>
+    </div>
+</section>
+
+<!-- ══ ABOUT STORY ══ -->
+<section class="about-story">
+    <div class="kanji-bg" style="font-size:280px;bottom:-60px;right:-20px;opacity:.025;">物</div>
+    <div class="section-inner about-inner">
+        <div class="about-img-col reveal">
+            <div class="about-img-frame">
+                <div class="kanji-stamp">品</div>
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=500&fit=crop" alt="Our Story">
+                <div class="frame-accent"></div>
+            </div>
+            <div class="mini-stats">
+                <div class="mini-stat">
+                    <span class="stat-n">5+</span>
+                    <span class="stat-l">Years</span>
+                </div>
+                <div class="mini-stat">
+                    <span class="stat-n">50K+</span>
+                    <span class="stat-l">Customers</span>
+                </div>
+                <div class="mini-stat">
+                    <span class="stat-n">100+</span>
+                    <span class="stat-l">Brands</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-content reveal" style="--d:.1s">
+            <p class="section-tag">Our Story</p>
+            <h2 class="section-title">Premium Quality <span>E-Commerce</span><br>Since 2021</h2>
+            <p class="about-desc" style="margin-top:20px;">PortzAkura was founded with a simple mission: to provide customers with access to premium quality products at competitive prices, backed by exceptional customer service.</p>
+            <p class="about-desc">What started as a small online retailer has grown into a trusted destination for thousands of customers seeking quality electronics, fashion, home goods, and lifestyle products.</p>
+            <p class="about-desc">We believe that shopping should be an enjoyable experience, which is why we've invested in creating a seamless, user-friendly platform that makes finding and purchasing your favorite products effortless.</p>
+            
+            <div class="values-grid">
+                <div class="value-item">
+                    <i class="bi bi-shield-check"></i>
+                    <div>
+                        <h4>Quality Assurance</h4>
+                        <p>Every product is carefully vetted for quality and authenticity</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="bi bi-truck"></i>
+                    <div>
+                        <h4>Fast Shipping</h4>
+                        <p>Quick and reliable delivery to your doorstep</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="bi bi-headset"></i>
+                    <div>
+                        <h4>24/7 Support</h4>
+                        <p>Dedicated customer service team always ready to help</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ MISSION & VISION ══ -->
+<section class="mission-vision">
+    <div class="section-inner col">
+        <div class="mv-grid">
+            <div class="mv-card reveal">
+                <div class="mv-icon">
+                    <i class="bi bi-bullseye"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p>To democratize access to premium products by offering carefully curated selections at competitive prices, while maintaining the highest standards of customer service and satisfaction.</p>
+            </div>
+            <div class="mv-card reveal" style="--d:.15s">
+                <div class="mv-icon">
+                    <i class="bi bi-eye"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>To become the most trusted e-commerce platform globally, known for quality products, innovative shopping experiences, and building lasting relationships with our customers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ TEAM SECTION ══ -->
+<section class="team-section">
+    <div class="kanji-bg" style="font-size:250px;top:-40px;left:-30px;opacity:.02;">人</div>
+    <div class="section-inner col">
+        <div class="section-head reveal">
+            <p class="section-tag">Team</p>
+            <h2 class="section-title">Meet Our <span>Team</span></h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal" style="--d:.05s">
+                <div class="team-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="CEO">
+                </div>
+                <div class="team-info">
+                    <h4>Michael Chen</h4>
+                    <span class="team-role">CEO & Founder</span>
+                    <p>Visionary leader with 10+ years in e-commerce and retail technology.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card reveal" style="--d:.1s">
+                <div class="team-img">
+                    <img src="https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/689636426_1000956112375699_1492207934036265854_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1440&ctp=s206x206&_nc_cat=111&ccb=1-7&_nc_sid=fe5ecc&_nc_eui2=AeHCxhgneJbBb0GhRbc6AHQ888bNF4EfaF7zxs0XgR9oXiI-ps3NCup-jNbzOyAs3MJEpZYws5baW0tmUKKmn2gX&_nc_ohc=Qn9acSqX7K4Q7kNvwEP6FSf&_nc_oc=AdqXLjO8PJpPqNyTqepyrrWDrDbw4Q8GtrUd0jt1xLSvkTJZV7KezEQM_OOkwQzUJSw&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=P-n8r7P2kInDjTlylW6fDA&_nc_ss=7b2a8&oh=00_AQA2eszTix5_w1e5IfliF7BSp_7bC4QpCT9odXx9_emOsw&oe=6A5A89F8">
+                </div>
+                <div class="team-info">
+                    <h4>Sarah Johnson</h4>
+                    <span class="team-role">CTO</span>
+                    <p>Tech expert ensuring our platform delivers the best user experience.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card reveal" style="--d:.15s">
+                <div class="team-img">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face" alt="Head of Operations">
+                </div>
+                <div class="team-info">
+                    <h4>David Rodriguez</h4>
+                    <span class="team-role">Head of Operations</span>
+                    <p>Operations specialist focused on logistics and customer satisfaction.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ STATS SECTION ══ -->
+<section class="stats-section">
+    <div class="section-inner">
+        <div class="stats-grid">
+            <div class="stat-card reveal">
+                <div class="stat-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+                <div class="stat-number" data-target="50000">0</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-card reveal" style="--d:.1s">
+                <div class="stat-icon">
+                    <i class="bi bi-box"></i>
+                </div>
+                <div class="stat-number" data-target="10000">0</div>
+                <div class="stat-label">Products Sold</div>
+            </div>
+            <div class="stat-card reveal" style="--d:.15s">
+                <div class="stat-icon">
+                    <i class="bi bi-globe"></i>
+                </div>
+                <div class="stat-number" data-target="25">0</div>
+                <div class="stat-label">Countries Served</div>
+            </div>
+            <div class="stat-card reveal" style="--d:.2s">
+                <div class="stat-icon">
+                    <i class="bi bi-star"></i>
+                </div>
+                <div class="stat-number" data-target="99">0</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <a href="index.html" class="footer-logo"><span>P</span>ortzAkura</a>
+            <p>Your trusted destination for premium products with exceptional quality and service.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Category.html">Categories</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Customer Service</h4>
+            <ul class="footer-links">
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Legal</h4>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Refund Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-inner">
+            <p>&copy; 2026 PortzAkura. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <i class="bi bi-credit-card"></i>
+                <i class="bi bi-paypal"></i>
+                <span>Secure Payment</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Counter animation for stats
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    const options = {
+        threshold: 0.3
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.dataset.target);
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current).toLocaleString();
+                }, 20);
+                
+                observer.unobserve(counter);
+            }
+        });
+    }, options);
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+document.addEventListener('DOMContentLoaded', animateCounters);
+</script>
+
+</body>
+</html>

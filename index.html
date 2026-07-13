@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortzAkura - Premium E-Commerce Store</title>
+    <meta name="description" content="Discover premium products at PortzAkura - Your destination for quality electronics, fashion, and lifestyle items.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sakura-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanlines"></div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Shopping Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart" id="closeCart"><i class="bi bi-x"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+            <i class="bi bi-bag"></i>
+            <p>Your cart is empty</p>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total: $<span id="cartTotal">0.00</span></span>
+        </div>
+        <button class="btn-primary checkout-btn" id="checkoutBtn">Checkout</button>
+    </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#home" class="logo"><span>P</span>ortzAkura</a>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="Category.html" class="nav-link">Categories</a>
+            <a href="About.html" class="nav-link">About</a>
+            <a href="Contact.html" class="nav-link">Contact</a>
+            <a href="login.html" class="nav-link nav-cta">Login</a>
+        </div>
+        <div class="nav-actions">
+            <button class="search-btn" id="searchBtn"><i class="bi bi-search"></i></button>
+            <button class="cart-btn" id="cartBtn">
+                <i class="bi bi-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">&#10005;</button>
+    <nav class="mobile-nav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="Category.html" class="nav-link">Categories</a>
+        <a href="About.html" class="nav-link">About</a>
+        <a href="Contact.html" class="nav-link">Contact</a>
+        <a href="login.html" class="nav-link nav-cta">Login</a>
+    </nav>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="home" class="hero">
+    <div class="hero-kanji">Shop</div>
+    <div class="hero-inner">
+        <div class="hero-left">
+            <p class="hero-eyebrow reveal"><span class="dot-pulse"></span> New Arrivals Daily</p>
+            <h1 class="hero-title reveal">
+                Premium Quality<br>
+                <span class="name-highlight">E-Commerce</span>
+            </h1>
+            <div class="typewriter-wrap reveal">
+                <span>Discover&nbsp;</span><span id="typewriter"></span><span class="tw-cursor">|</span>
+            </div>
+            <p class="hero-desc reveal">
+                Welcome to PortzAkura, your destination for premium electronics, fashion, and lifestyle products. Experience quality shopping with fast delivery and exceptional customer service.
+            </p>
+            <div class="hero-actions reveal">
+                <a href="#featured" class="btn-primary">Shop Now <i class="bi bi-arrow-right"></i></a>
+                <a href="#categories" class="btn-outline"><i class="bi bi-grid"></i> Browse Categories</a>
+            </div>
+            <div class="stats-row reveal">
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">Products</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Customers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99%</span>
+                    <span class="stat-label">Satisfaction</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right reveal">
+            <div class="hero-product-showcase">
+                <div class="product-ring ring-1"></div>
+                <div class="product-ring ring-2"></div>
+                <canvas class="ring-dots" id="ringCanvas" width="360" height="360"></canvas>
+                <div class="featured-product">
+                    <img src="https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/689636426_1000956112375699_1492207934036265854_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1440&ctp=s206x206&_nc_cat=111&ccb=1-7&_nc_sid=fe5ecc&_nc_eui2=AeHCxhgneJbBb0GhRbc6AHQ888bNF4EfaF7zxs0XgR9oXiI-ps3NCup-jNbzOyAs3MJEpZYws5baW0tmUKKmn2gX&_nc_ohc=Qn9acSqX7K4Q7kNvwEP6FSf&_nc_oc=AdqXLjO8PJpPqNyTqepyrrWDrDbw4Q8GtrUd0jt1xLSvkTJZV7KezEQM_OOkwQzUJSw&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=P-n8r7P2kInDjTlylW6fDA&_nc_ss=7b2a8&oh=00_AQA2eszTix5_w1e5IfliF7BSp_7bC4QpCT9odXx9_emOsw&oe=6A5A89F8">
+                    <div class="product-badge">Featured</div>
+                    <div class="product-price">$299</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-bar"><div class="scroll-progress"></div></div>
+    </div>
+</section>
+
+<!-- ══ CATEGORIES ══ -->
+<section id="categories" class="categories">
+    <div class="kanji-bg" style="font-size:280px;bottom:-60px;right:-20px;opacity:.025;">類</div>
+    <div class="section-inner col">
+        <div class="section-head reveal">
+            <p class="section-tag">Categories</p>
+            <h2 class="section-title">Shop by <span>Category</span></h2>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card reveal" style="--d:.05s">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=400&h=300&fit=crop" alt="Electronics">
+                    <div class="category-overlay">
+                        <i class="bi bi-lightning-charge"></i>
+                    </div>
+                </div>
+                <div class="category-info">
+                    <h3>Electronics</h3>
+                    <p>Latest gadgets and tech essentials</p>
+                    <span class="product-count">2,500+ items</span>
+                </div>
+            </div>
+            <div class="category-card reveal" style="--d:.1s">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop" alt="Fashion">
+                    <div class="category-overlay">
+                        <i class="bi bi-bag-heart"></i>
+                    </div>
+                </div>
+                <div class="category-info">
+                    <h3>Fashion</h3>
+                    <p>Trendy clothing and accessories</p>
+                    <span class="product-count">5,000+ items</span>
+                </div>
+            </div>
+            <div class="category-card reveal" style="--d:.15s">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" alt="Home & Living">
+                    <div class="category-overlay">
+                        <i class="bi bi-house"></i>
+                    </div>
+                </div>
+                <div class="category-info">
+                    <h3>Home & Living</h3>
+                    <p>Beautiful home decoration items</p>
+                    <span class="product-count">1,800+ items</span>
+                </div>
+            </div>
+            <div class="category-card reveal" style="--d:.2s">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" alt="Sports">
+                    <div class="category-overlay">
+                        <i class="bi bi-trophy"></i>
+                    </div>
+                </div>
+                <div class="category-info">
+                    <h3>Sports & Fitness</h3>
+                    <p>Equipment for active lifestyle</p>
+                    <span class="product-count">900+ items</span>
+                </div>
+            </div>
+            <div class="category-card reveal" style="--d:.25s">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop" alt="Books">
+                    <div class="category-overlay">
+                        <i class="bi bi-book"></i>
+                    </div>
+                </div>
+                <div class="category-info">
+                    <h3>Books & Education</h3>
+                    <p>Knowledge and learning resources</p>
+                    <span class="product-count">1,200+ items</span>
+                </div>
+            </div>
+            <div class="category-card reveal" style="--d:.3s">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=300&fit=crop" alt="Beauty">
+                    <div class="category-overlay">
+                        <i class="bi bi-brush"></i>
+                    </div>
+                </div>
+                <div class="category-info">
+                    <h3>Beauty & Personal Care</h3>
+                    <p>Skincare and beauty essentials</p>
+                    <span class="product-count">800+ items</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FEATURED PRODUCTS ══ -->
+<section id="featured" class="featured">
+    <div class="kanji-bg" style="font-size:260px;top:-40px;left:-30px;">品</div>
+    <div class="section-inner col">
+        <div class="section-head reveal">
+            <p class="section-tag">Featured</p>
+            <h2 class="section-title">Popular <span>Products</span></h2>
+        </div>
+        <div class="products-grid">
+            <div class="product-card reveal" style="--d:.05s" data-product-id="1">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop" alt="Premium Headphones">
+                    <div class="product-actions">
+                        <button class="quick-view" data-product-id="1"><i class="bi bi-eye"></i></button>
+                        <button class="add-to-cart" data-product-id="1" data-name="Premium Headphones" data-price="299" data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop">
+                            <i class="bi bi-cart-plus"></i>
+                        </button>
+                    </div>
+                    <span class="product-badge sale">Sale</span>
+                </div>
+                <div class="product-info">
+                    <h3>Premium Headphones</h3>
+                    <p class="product-desc">High-quality wireless headphones with noise cancellation</p>
+                    <div class="product-price">
+                        <span class="current-price">$299</span>
+                        <span class="old-price">$399</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <span class="rating-text">(4.9)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card reveal" style="--d:.1s" data-product-id="2">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop" alt="Smart Watch">
+                    <div class="product-actions">
+                        <button class="quick-view" data-product-id="2"><i class="bi bi-eye"></i></button>
+                        <button class="add-to-cart" data-product-id="2" data-name="Smart Watch Pro" data-price="199" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop">
+                            <i class="bi bi-cart-plus"></i>
+                        </button>
+                    </div>
+                    <span class="product-badge new">New</span>
+                </div>
+                <div class="product-info">
+                    <h3>Smart Watch Pro</h3>
+                    <p class="product-desc">Advanced fitness tracking and health monitoring</p>
+                    <div class="product-price">
+                        <span class="current-price">$199</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <span class="rating-text">(4.7)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card reveal" style="--d:.15s" data-product-id="3">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="Wireless Speaker">
+                    <div class="product-actions">
+                        <button class="quick-view" data-product-id="3"><i class="bi bi-eye"></i></button>
+                        <button class="add-to-cart" data-product-id="3" data-name="Wireless Speaker" data-price="149" data-image="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop">
+                            <i class="bi bi-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Wireless Speaker</h3>
+                    <p class="product-desc">Portable speaker with premium sound quality</p>
+                    <div class="product-price">
+                        <span class="current-price">$149</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <span class="rating-text">(4.8)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card reveal" style="--d:.2s" data-product-id="4">
+                <div class="product-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop" alt="Running Shoes">
+                    <div class="product-actions">
+                        <button class="quick-view" data-product-id="4"><i class="bi bi-eye"></i></button>
+                        <button class="add-to-cart" data-product-id="4" data-name="Premium Running Shoes" data-price="129" data-image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop">
+                            <i class="bi bi-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Premium Running Shoes</h3>
+                    <p class="product-desc">Comfortable athletic shoes for daily training</p>
+                    <div class="product-price">
+                        <span class="current-price">$129</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <span class="rating-text">(4.6)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-cta reveal" style="--d:.25s">
+            <a href="Category.html" class="btn-primary">View All Products <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services" class="services">
+    <div class="kanji-bg" style="font-size:250px;bottom:-40px;right:-20px;">仕</div>
+    <div class="section-inner col">
+        <div class="section-head reveal">
+            <p class="section-tag">Services</p>
+            <h2 class="section-title">Why Choose <span>PortzAkura</span></h2>
+        </div>
+        <div class="svc-grid">
+            <div class="svc-card reveal" style="--d:.05s">
+                <span class="svc-num">01</span>
+                <div class="svc-icon-wrap"><i class="bi bi-truck svc-icon"></i></div>
+                <h3>Fast Shipping</h3>
+                <p>Free shipping on orders over $50. Express delivery available nationwide with tracking for all orders.</p>
+                <div class="svc-arrow"><i class="bi bi-arrow-up-right"></i></div>
+            </div>
+            <div class="svc-card reveal" style="--d:.15s">
+                <span class="svc-num">02</span>
+                <div class="svc-icon-wrap"><i class="bi bi-shield-check svc-icon"></i></div>
+                <h3>Secure Payment</h3>
+                <p>Your transactions are protected with bank-level security and encryption. Multiple payment options available.</p>
+                <div class="svc-arrow"><i class="bi bi-arrow-up-right"></i></div>
+            </div>
+            <div class="svc-card reveal" style="--d:.25s">
+                <span class="svc-num">03</span>
+                <div class="svc-icon-wrap"><i class="bi bi-headset svc-icon"></i></div>
+                <h3>24/7 Support</h3>
+                <p>Our dedicated customer service team is available round the clock to help you with any questions or issues.</p>
+                <div class="svc-arrow"><i class="bi bi-arrow-up-right"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section id="newsletter" class="newsletter">
+    <div class="kanji-bg" style="font-size:240px;top:-30px;left:-20px;">信</div>
+    <div class="section-inner col" style="align-items:center;">
+        <div class="newsletter-content reveal">
+            <div class="section-head" style="text-align:center;margin-bottom:40px;">
+                <p class="section-tag">Newsletter</p>
+                <h2 class="section-title">Stay Updated with<br><span>Latest Deals</span></h2>
+                <p class="newsletter-desc">Subscribe to our newsletter and be the first to know about exclusive offers, new arrivals, and special promotions.</p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn-primary">Subscribe <i class="bi bi-arrow-right"></i></button>
+                </div>
+                <p class="form-note">We respect your privacy. Unsubscribe at any time.</p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="contact">
+    <div class="kanji-bg" style="font-size:230px;bottom:-30px;right:-10px;">連</div>
+    <div class="section-inner contact-inner">
+        <div class="contact-left reveal">
+            <p class="section-tag">Contact</p>
+            <h2 class="section-title">Get in<br><span>Touch</span></h2>
+            <p class="contact-sub">Have questions about our products or need assistance? We're here to help.</p>
+            <div class="contact-links">
+                <a href="mailto:support@portzakura.com" class="c-link"><i class="bi bi-envelope"></i>support@portzakura.com</a>
+                <a href="tel:+1234567890" class="c-link"><i class="bi bi-phone"></i>+1 (234) 567-8900</a>
+                <div class="c-link"><i class="bi bi-geo-alt"></i>123 Commerce Street, Business District</div>
+                <div class="c-link"><i class="bi bi-clock"></i>Mon - Fri: 9AM - 6PM</div>
+            </div>
+        </div>
+        <div class="contact-right reveal" style="--d:.1s">
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="email@gmail.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="Type your message..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary wide">
+                    Send Message <i class="bi bi-send"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <a href="#home" class="footer-logo"><span>P</span>ortzAkura</a>
+            <p>Your trusted destination for premium products with exceptional quality and service.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="Category.html">Categories</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Customer Service</h4>
+            <ul class="footer-links">
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Legal</h4>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Refund Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-inner">
+            <p>&copy; 2026 PortzAkura. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <i class="bi bi-credit-card"></i>
+                <i class="bi bi-paypal"></i>
+                <span>Secure Payment</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

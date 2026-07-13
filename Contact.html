@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PortzAkura</title>
+    <meta name="description" content="Get in touch with PortzAkura. We're here to help with your questions and provide excellent customer support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sakura-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanlines"></div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Shopping Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart" id="closeCart"><i class="bi bi-x"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+            <i class="bi bi-bag"></i>
+            <p>Your cart is empty</p>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total: $<span id="cartTotal">0.00</span></span>
+        </div>
+        <button class="btn-primary checkout-btn" id="checkoutBtn">Checkout</button>
+    </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="index.html" class="logo"><span>P</span>ortzAkura</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Category.html" class="nav-link">Categories</a>
+            <a href="About.html" class="nav-link">About</a>
+            <a href="Contact.html" class="nav-link active">Contact</a>
+            <a href="login.html" class="nav-link nav-cta">Login</a>
+        </div>
+        <div class="nav-actions">
+            <button class="search-btn" id="searchBtn"><i class="bi bi-search"></i></button>
+            <button class="cart-btn" id="cartBtn">
+                <i class="bi bi-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">&#10005;</button>
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="Category.html" class="nav-link">Categories</a>
+        <a href="About.html" class="nav-link">About</a>
+        <a href="Contact.html" class="nav-link active">Contact</a>
+        <a href="login.html" class="nav-link nav-cta">Login</a>
+    </nav>
+</div>
+
+<!-- ══ PAGE HEADER ══ -->
+<section class="page-header">
+    <div class="kanji-bg" style="font-size:200px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.02;">連</div>
+    <div class="page-header-content">
+        <h1>Contact Us</h1>
+        <p>We're here to help you with any questions or concerns you may have</p>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="bi bi-chevron-right"></i>
+            <span>Contact</span>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT INFO ══ -->
+<section class="contact-info-section">
+    <div class="section-inner">
+        <div class="contact-info-grid">
+            <div class="contact-info-card reveal">
+                <div class="contact-icon">
+                    <i class="bi bi-geo-alt"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Visit Our Store</h3>
+                    <p>123 Commerce Street<br>Business District, NY 10001</p>
+                </div>
+            </div>
+            <div class="contact-info-card reveal" style="--d:.1s">
+                <div class="contact-icon">
+                    <i class="bi bi-telephone"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Call Us</h3>
+                    <p>+1 (234) 567-8900<br>Mon - Fri: 9AM - 6PM</p>
+                </div>
+            </div>
+            <div class="contact-info-card reveal" style="--d:.15s">
+                <div class="contact-icon">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Email Us</h3>
+                    <p>support@portzakura.com<br>We'll respond within 24 hours</p>
+                </div>
+            </div>
+            <div class="contact-info-card reveal" style="--d:.2s">
+                <div class="contact-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Live Chat</h3>
+                    <p>Available 24/7<br>Instant support for urgent issues</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT FORM SECTION ══ -->
+<section class="contact-form-section">
+    <div class="kanji-bg" style="font-size:230px;bottom:-30px;right:-10px;opacity:.02;">話</div>
+    <div class="section-inner contact-inner">
+        <div class="contact-left reveal">
+            <p class="section-tag">Get in Touch</p>
+            <h2 class="section-title">Send Us a<br><span>Message</span></h2>
+            <p class="contact-sub">Have questions about our products, need help with an order, or want to provide feedback? We'd love to hear from you.</p>
+            
+            <div class="contact-features">
+                <div class="feature-item">
+                    <i class="bi bi-clock"></i>
+                    <div>
+                        <h4>Quick Response</h4>
+                        <p>We typically respond to messages within 2-4 hours during business hours.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="bi bi-shield-check"></i>
+                    <div>
+                        <h4>Secure & Private</h4>
+                        <p>Your information is protected and will never be shared with third parties.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="bi bi-people"></i>
+                    <div>
+                        <h4>Expert Support</h4>
+                        <p>Our knowledgeable team is ready to assist with any questions or concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-right reveal" style="--d:.1s">
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" placeholder="Your first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" placeholder="Your last name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" placeholder="(123) 456-7890">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <select name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="order">Order Support</option>
+                        <option value="product">Product Question</option>
+                        <option value="billing">Billing Issue</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="6" name="message" placeholder="Please provide details about your inquiry..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="newsletter">
+                        <span class="checkmark"></span>
+                        I would like to receive updates about new products and promotions
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary wide">
+                    Send Message <i class="bi bi-send"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FAQ SECTION ══ -->
+<section class="faq-section">
+    <div class="section-inner col">
+        <div class="section-head reveal">
+            <p class="section-tag">FAQ</p>
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item reveal" style="--d:.05s">
+                <div class="faq-question">
+                    <h3>What are your shipping options and delivery times?</h3>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer standard shipping (5-7 business days) and express shipping (2-3 business days). Free standard shipping is available on orders over $50. Express shipping rates vary by location and package size.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal" style="--d:.1s">
+                <div class="faq-question">
+                    <h3>What is your return and refund policy?</h3>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept returns within 30 days of purchase. Items must be in original condition with tags attached. Refunds are processed within 3-5 business days after we receive the returned item. Return shipping costs may apply unless the item is defective.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal" style="--d:.15s">
+                <div class="faq-question">
+                    <h3>Do you offer international shipping?</h3>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we ship to over 25 countries worldwide. International shipping rates and delivery times vary by destination. Please note that customs duties and taxes may apply and are the responsibility of the customer.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal" style="--d:.2s">
+                <div class="faq-question">
+                    <h3>How can I track my order?</h3>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Once your order ships, you'll receive a tracking number via email. You can use this number to track your package on our website or the carrier's website. You can also check your order status by logging into your account.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal" style="--d:.25s">
+                <div class="faq-question">
+                    <h3>What payment methods do you accept?</h3>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, and Google Pay. All transactions are processed securely using industry-standard encryption.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <a href="index.html" class="footer-logo"><span>P</span>ortzAkura</a>
+            <p>Your trusted destination for premium products with exceptional quality and service.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Category.html">Categories</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Customer Service</h4>
+            <ul class="footer-links">
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Legal</h4>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Refund Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-inner">
+            <p>&copy; 2026 PortzAkura. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <i class="bi bi-credit-card"></i>
+                <i class="bi bi-paypal"></i>
+                <span>Secure Payment</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// FAQ functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.bi-chevron-down');
+        
+        question.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('open');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                    otherItem.querySelector('.bi-chevron-down').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current item
+            if (isOpen) {
+                item.classList.remove('open');
+                answer.style.maxHeight = '0';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+    
+    // Enhanced contact form handling
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="bi bi-clock"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission
+        setTimeout(() => {
+            submitBtn.innerHTML = '<i class="bi bi-check-circle"></i> Message Sent!';
+            submitBtn.style.background = '#2dd4bf';
+            
+            // Show success notification
+            showNotification('Thank you for your message! We\'ll get back to you soon.');
+            
+            // Reset form after delay
+            setTimeout(() => {
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 3000);
+        }, 2000);
+    });
+});
+
+// Custom notification function for contact page
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification success';
+    notification.innerHTML = `<i class="bi bi-check-circle"></i> ${message}`;
+    notification.style.cssText = `
+        position: fixed; top: 100px; right: 20px; z-index: 9999;
+        background: #2dd4bf; color: #fff; padding: 16px 24px;
+        border-radius: 8px; font-weight: 600; transform: translateX(100%);
+        transition: transform .3s ease; display: flex; align-items: center; gap: 8px;
+        box-shadow: 0 8px 32px rgba(0,0,0,.2);
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => document.body.removeChild(notification), 300);
+    }, 4000);
+}
+</script>
+
+</body>
+</html>
